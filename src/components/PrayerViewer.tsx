@@ -17,7 +17,7 @@ interface PrayerViewerProps {
   description?: string
 }
 
-export function PrayerViewer({ sectionId, title, fileName, description }: PrayerViewerProps) {
+export function PrayerViewer({ title, fileName, description }: PrayerViewerProps) {
   const [content, setContent] = useState<string | PrayerBlock[]>('')
   const [loading, setLoading] = useState(true)
   const [isStructured, setIsStructured] = useState(false)
@@ -93,11 +93,11 @@ export function PrayerViewer({ sectionId, title, fileName, description }: Prayer
         <ScrollArea className="h-[calc(100vh-250px)] w-full">
           {isStructured && Array.isArray(content) ? (
             <PrayerText blocks={content} />
-          ) : (
+          ) : typeof content === 'string' ? (
             <pre className="whitespace-pre-wrap font-serif text-sm leading-relaxed p-4">
               {content}
             </pre>
-          )}
+          ) : null}
         </ScrollArea>
       </CardContent>
     </Card>
