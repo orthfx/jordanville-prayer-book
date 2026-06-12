@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -10,26 +10,26 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-} from '@/components/ui/sidebar'
-import { Book, Moon, Sun, Cross, Church, Calendar, Home } from 'lucide-react'
-import { prayerSections, type PrayerSection } from '../data/prayer-index'
-import { ModeToggle } from './mode-toggle'
+} from "@/components/ui/sidebar";
+import { Book, Moon, Sun, Cross, Church, Calendar, Home } from "lucide-react";
+import { prayerSections, type PrayerSection } from "../data/prayer-index";
+import { ModeToggle } from "./mode-toggle";
 
 interface AppLayoutProps {
-  children: ReactNode
-  onSelectPrayer?: (section: PrayerSection) => void
-  onHome?: () => void
+  children: ReactNode;
+  onSelectPrayer?: (section: PrayerSection) => void;
+  onHome?: () => void;
 }
 
 export function AppLayout({ children, onSelectPrayer, onHome }: AppLayoutProps) {
   const categories = [
-    { id: 'morning', title: 'Morning Prayers', icon: Sun },
-    { id: 'evening', title: 'Evening Prayers', icon: Moon },
-    { id: 'communion', title: 'Holy Communion', icon: Cross },
-    { id: 'liturgical', title: 'Liturgical Services', icon: Church },
-    { id: 'canon', title: 'Canons', icon: Book },
-    { id: 'occasional', title: 'Occasional Prayers', icon: Calendar },
-  ] as const
+    { id: "morning", title: "Morning Prayers", icon: Sun },
+    { id: "evening", title: "Evening Prayers", icon: Moon },
+    { id: "communion", title: "Holy Communion", icon: Cross },
+    { id: "liturgical", title: "Liturgical Services", icon: Church },
+    { id: "canon", title: "Canons", icon: Book },
+    { id: "occasional", title: "Occasional Prayers", icon: Calendar },
+  ] as const;
 
   return (
     <SidebarProvider>
@@ -51,8 +51,8 @@ export function AppLayout({ children, onSelectPrayer, onHome }: AppLayoutProps) 
             </SidebarGroup>
 
             {categories.map((category) => {
-              const sections = prayerSections.filter((s) => s.category === category.id)
-              if (sections.length === 0) return null
+              const sections = prayerSections.filter((s) => s.category === category.id);
+              if (sections.length === 0) return null;
 
               return (
                 <SidebarGroup key={category.id}>
@@ -64,9 +64,7 @@ export function AppLayout({ children, onSelectPrayer, onHome }: AppLayoutProps) 
                     <SidebarMenu>
                       {sections.map((section) => (
                         <SidebarMenuItem key={section.id}>
-                          <SidebarMenuButton
-                            onClick={() => onSelectPrayer?.(section)}
-                          >
+                          <SidebarMenuButton onClick={() => onSelectPrayer?.(section)}>
                             <span className="text-sm">{section.title}</span>
                           </SidebarMenuButton>
                         </SidebarMenuItem>
@@ -74,7 +72,7 @@ export function AppLayout({ children, onSelectPrayer, onHome }: AppLayoutProps) 
                     </SidebarMenu>
                   </SidebarGroupContent>
                 </SidebarGroup>
-              )
+              );
             })}
           </SidebarContent>
         </Sidebar>
@@ -92,5 +90,5 @@ export function AppLayout({ children, onSelectPrayer, onHome }: AppLayoutProps) 
         </div>
       </div>
     </SidebarProvider>
-  )
+  );
 }

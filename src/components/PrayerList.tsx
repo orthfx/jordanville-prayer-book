@@ -1,27 +1,27 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
-import { prayerSections, type PrayerSection } from '../data/prayer-index'
-import { Button } from './ui/button'
-import { Sun, Moon, Church, Book, Calendar, FileText } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { prayerSections, type PrayerSection } from "../data/prayer-index";
+import { Button } from "./ui/button";
+import { Sun, Moon, Church, Book, Calendar, FileText } from "lucide-react";
 
 interface PrayerListProps {
-  onSelectPrayer: (section: PrayerSection) => void
+  onSelectPrayer: (section: PrayerSection) => void;
 }
 
 export function PrayerList({ onSelectPrayer }: PrayerListProps) {
   const categories = [
-    { id: 'morning', title: 'Morning Prayers', icon: Sun },
-    { id: 'evening', title: 'Evening Prayers', icon: Moon },
-    { id: 'liturgical', title: 'Liturgical Services', icon: Church },
-    { id: 'canon', title: 'Canons', icon: Book },
-    { id: 'occasional', title: 'Occasional Prayers', icon: Calendar },
-    { id: 'other', title: 'Other', icon: FileText },
-  ] as const
+    { id: "morning", title: "Morning Prayers", icon: Sun },
+    { id: "evening", title: "Evening Prayers", icon: Moon },
+    { id: "liturgical", title: "Liturgical Services", icon: Church },
+    { id: "canon", title: "Canons", icon: Book },
+    { id: "occasional", title: "Occasional Prayers", icon: Calendar },
+    { id: "other", title: "Other", icon: FileText },
+  ] as const;
 
   return (
     <div className="space-y-8">
       {categories.map((category) => {
-        const sections = prayerSections.filter((s) => s.category === category.id)
-        if (sections.length === 0) return null
+        const sections = prayerSections.filter((s) => s.category === category.id);
+        if (sections.length === 0) return null;
 
         return (
           <div key={category.id}>
@@ -51,8 +51,8 @@ export function PrayerList({ onSelectPrayer }: PrayerListProps) {
               ))}
             </div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

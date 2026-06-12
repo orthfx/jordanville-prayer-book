@@ -1,36 +1,39 @@
-import { useState } from 'react'
-import { AppLayout } from './components/AppLayout'
-import { PrayerList } from './components/PrayerList'
-import { PrayerViewer } from './components/PrayerViewer'
-import { Button } from './components/ui/button'
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from './components/ui/breadcrumb'
-import type { PrayerSection } from './data/prayer-index'
-import { ArrowLeft } from 'lucide-react'
+import { useState } from "react";
+import { AppLayout } from "./components/AppLayout";
+import { PrayerList } from "./components/PrayerList";
+import { PrayerViewer } from "./components/PrayerViewer";
+import { Button } from "./components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "./components/ui/breadcrumb";
+import type { PrayerSection } from "./data/prayer-index";
+import { ArrowLeft } from "lucide-react";
 
 function App() {
-  const [selectedPrayer, setSelectedPrayer] = useState<PrayerSection | null>(null)
+  const [selectedPrayer, setSelectedPrayer] = useState<PrayerSection | null>(null);
 
   return (
-    <AppLayout
-      onSelectPrayer={setSelectedPrayer}
-      onHome={() => setSelectedPrayer(null)}
-    >
+    <AppLayout onSelectPrayer={setSelectedPrayer} onHome={() => setSelectedPrayer(null)}>
       <div className="max-w-6xl">
         {selectedPrayer ? (
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setSelectedPrayer(null)}
-              >
+              <Button variant="ghost" size="sm" onClick={() => setSelectedPrayer(null)}>
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Prayers
               </Button>
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem>
-                    <BreadcrumbLink onClick={() => setSelectedPrayer(null)} className="cursor-pointer">
+                    <BreadcrumbLink
+                      onClick={() => setSelectedPrayer(null)}
+                      className="cursor-pointer"
+                    >
                       Prayer Book
                     </BreadcrumbLink>
                   </BreadcrumbItem>
@@ -61,7 +64,7 @@ function App() {
         )}
       </div>
     </AppLayout>
-  )
+  );
 }
 
-export default App
+export default App;

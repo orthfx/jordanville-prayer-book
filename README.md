@@ -5,6 +5,7 @@ A digital Orthodox Christian prayer book app based on the Jordanville Prayer Boo
 ## Overview
 
 This app provides an accessible, beautifully formatted digital version of traditional Orthodox prayers with modern enhancements like:
+
 - **Dark/Light mode** support
 - **Interactive glossary** - hover over Orthodox terms to see definitions
 - **Rich typography** - proper formatting with drop caps, headings, and spacing
@@ -13,11 +14,12 @@ This app provides an accessible, beautifully formatted digital version of tradit
 
 ## Tech Stack
 
-- **Vite** - Fast development and build tool
-- **React + TypeScript** - UI framework with type safety
-- **Tailwind CSS** - Utility-first styling
+- **Vite+ (`vp`)** - Unified dev, check, test, build, formatting, linting, and package-management toolchain
+- **React 19 + TypeScript** - UI framework with type safety
+- **Tailwind CSS v4** - Utility-first styling
 - **shadcn/ui** - High-quality component library
 - **Radix UI** - Accessible UI primitives (tooltips, dropdowns, etc.)
+- **Tauri v2** - Desktop and mobile app shell
 
 ## Project Structure
 
@@ -47,25 +49,55 @@ jpb/
 ## Getting Started
 
 ### Prerequisites
-- Node.js 18+
-- npm or pnpm
+
+- Node.js managed by Vite+ or a compatible local Node.js install
+- Vite+ `vp` CLI
 
 ### Installation
 
 ```bash
-npm install
+vp install
 ```
 
 ### Development
 
 ```bash
-npm run dev
+vp dev
 ```
 
-### Build
+### Quality checks
 
 ```bash
-npm run build
+vp check
+```
+
+### Build targets
+
+This app supports web, desktop, iOS, and Android build targets.
+
+#### Web
+
+```bash
+vp build
+vp preview
+```
+
+#### Desktop / macOS
+
+```bash
+vp run tauri:desktop:build
+```
+
+#### iOS
+
+```bash
+vp run tauri:ios:build
+```
+
+#### Android
+
+```bash
+vp run tauri:android:build
 ```
 
 ## Key Features
@@ -108,6 +140,7 @@ Enhanced JSON with annotations:
 ## Current Status
 
 ✅ **Completed:**
+
 - Vite + React + TypeScript setup
 - shadcn/ui component library integration
 - Dark/light mode theming
@@ -119,6 +152,7 @@ Enhanced JSON with annotations:
 - Morning Prayers fully annotated
 
 🚧 **In Progress:**
+
 - Adding annotations to remaining sections
 - Expanding glossary definitions
 

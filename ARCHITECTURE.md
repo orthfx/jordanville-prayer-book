@@ -3,6 +3,7 @@
 ## Project Goals
 
 Build a modern, accessible digital prayer book that:
+
 1. Preserves the traditional Orthodox content from the Jordanville Prayer Book
 2. Enhances readability with proper typography and formatting
 3. Makes Orthodox terminology accessible through interactive glossaries
@@ -16,6 +17,7 @@ Build a modern, accessible digital prayer book that:
 **Decision**: Use JSON with annotations instead of JSX/MDX for prayer content
 
 **Rationale**:
+
 - Content remains separate from code
 - Human-readable and editable
 - Searchable and query-able
@@ -23,21 +25,22 @@ Build a modern, accessible digital prayer book that:
 - Easy to version control
 
 **Format**:
+
 ```typescript
 interface PrayerBlock {
-  type: 'title' | 'instruction' | 'heading' | 'prayer' | 'response' | 'psalm'
-  content: string
-  dropCap?: boolean
-  annotations?: Annotation[]
+  type: "title" | "instruction" | "heading" | "prayer" | "response" | "psalm";
+  content: string;
+  dropCap?: boolean;
+  annotations?: Annotation[];
 }
 
 interface Annotation {
-  term: string
-  type: 'glossary' | 'link' | 'saint' | 'scripture'
-  definition?: string
-  href?: string
-  saintId?: string
-  scriptureRef?: string
+  term: string;
+  type: "glossary" | "link" | "saint" | "scripture";
+  definition?: string;
+  href?: string;
+  saintId?: string;
+  scriptureRef?: string;
 }
 ```
 
@@ -51,6 +54,7 @@ interface Annotation {
 4. **Annotated**: Add glossary terms and metadata
 
 **Scripts**:
+
 - `parse-prayerbook.ts` - Extract sections from source
 - `clean-prayers.ts` - Clean and structure content
 - `add-annotations.ts` - Add glossary annotations
@@ -68,6 +72,7 @@ AppLayout (provides sidebar navigation)
 ```
 
 **Design Principles**:
+
 - Use shadcn/ui components exclusively (no custom UI)
 - Pure Tailwind CSS (no custom CSS except when absolutely necessary)
 - Component composition over complex props
@@ -76,12 +81,14 @@ AppLayout (provides sidebar navigation)
 ### 4. Styling Approach
 
 **Tailwind-first**:
+
 - All styling uses Tailwind utility classes
 - Dark mode handled via Tailwind's dark: variant
 - Typography uses Tailwind's font utilities
 - Drop caps: `first-letter:` pseudo-class utilities
 
 **Theme System**:
+
 - shadcn/ui color tokens (--background, --foreground, --primary, etc.)
 - System/light/dark mode support
 - Colors use OKLCH color space for better perceptual uniformity
@@ -89,12 +96,14 @@ AppLayout (provides sidebar navigation)
 ### 5. Type System
 
 **Key Types**:
+
 - `PrayerBlock` - Content structure
 - `Annotation` - Glossary/reference metadata
 - `PrayerCategory` - Prayer categorization
 - `PrayerSection` - Section metadata
 
 **Philosophy**:
+
 - Strict TypeScript for all code
 - Shared types in `src/types/`
 - Component-specific types inline
@@ -123,6 +132,7 @@ AppLayout (provides sidebar navigation)
 **Current**: Central glossary in `src/data/glossary.ts`
 
 **Future Considerations**:
+
 - Could expand to separate glossary page
 - Add search/browse functionality
 - Link to saint biographies
@@ -188,6 +198,7 @@ AnnotatedText adds tooltips
 **Current**: Manual testing
 
 **Future**:
+
 - Unit tests for annotation matching
 - Component tests for PrayerText rendering
 - E2E tests for navigation flow
@@ -196,6 +207,7 @@ AnnotatedText adds tooltips
 ## Accessibility
 
 **Current**:
+
 - Semantic HTML (h1, h2, p tags)
 - ARIA labels in tooltips
 - Keyboard navigation (sidebar, tooltips)
@@ -203,6 +215,7 @@ AnnotatedText adds tooltips
 - Focus indicators
 
 **Future**:
+
 - Screen reader optimization
 - Font size controls
 - High contrast mode
@@ -211,11 +224,13 @@ AnnotatedText adds tooltips
 ## Browser Support
 
 **Target**: Modern evergreen browsers
+
 - Chrome/Edge (latest 2 versions)
 - Firefox (latest 2 versions)
 - Safari (latest 2 versions)
 
 **Features Used**:
+
 - CSS custom properties (--variables)
 - CSS pseudo-selectors (::first-letter)
 - ES2022 JavaScript
